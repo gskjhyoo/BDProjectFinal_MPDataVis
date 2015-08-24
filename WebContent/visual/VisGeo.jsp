@@ -1,3 +1,5 @@
+<%@page import="bdp.model.dto.SidoSpecifiCountDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="bdp.model.dto.PersonDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -31,7 +33,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+<%
+ /* DATA Loading!!*/
+List<SidoSpecifiCountDTO> lstSSC  = (List<SidoSpecifiCountDTO>) request.getAttribute("SidoSpecifiCount");
+%>
 </head>
 
 <body>
@@ -1225,7 +1230,12 @@
 		</table>
 		</div>
 	</div>
-
+	<hr>
+	<%
+	
+	out.print(lstSSC.toString());
+	
+	%>
 	<hr>
 
     <!-- Footer -->

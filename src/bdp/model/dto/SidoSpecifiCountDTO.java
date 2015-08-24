@@ -2,9 +2,9 @@ package bdp.model.dto;
 
 public class SidoSpecifiCountDTO {
 	String guName;
-	int countTotal;
+	Long countTotal;
 	
-	public SidoSpecifiCountDTO(String guName, int countTotal) {
+	public SidoSpecifiCountDTO(String guName, Long countTotal) {
 		this.guName = guName;
 		this.countTotal = countTotal;
 	}
@@ -25,10 +25,10 @@ public class SidoSpecifiCountDTO {
 	public void setGuName(String guName) {
 		this.guName = guName;
 	}
-	public int getCountTotal() {
+	public Long getCountTotal() {
 		return countTotal;
 	}
-	public void setCountTotal(int countTotal) {
+	public void setCountTotal(Long countTotal) {
 		this.countTotal = countTotal;
 	}
 	

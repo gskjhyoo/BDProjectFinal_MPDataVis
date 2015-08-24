@@ -1,5 +1,7 @@
 package bdp.model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import bdp.model.dto.SidoSpecifiCountDTO;
@@ -14,19 +16,19 @@ public class SidoSpecifiCountDAO {
 		return instance;
 	}
 	
-	public SidoSpecifiCountDTO SidoSpecifiCount(){
+	public List<SidoSpecifiCountDTO> sidoSpecifiCount(){
 		System.out.println("SidoSpecifiCountDAO - SidoSpecifiCount");
 		SqlSession session = null;
-		SidoSpecifiCountDTO ssc = null;
+		List<SidoSpecifiCountDTO> lstSSC = null;
 		
 		try {
 			session = UtilDBMyBatis.getSqlSession();
-			ssc = session.selectOne("bdp.mapper.selectSidoSpecifiCount");
+			lstSSC = session.selectList("bdp.mapper.selectSidoSpecifiCount");
 		} finally {
-			
+			UtilDBMyBatis.closeSqlSession(session);
 		}
 		
-		return ssc;
+		return lstSSC;
 	}
 	
 }// end of class
