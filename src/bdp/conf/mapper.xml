@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bdp.mapper">
+	<!-- Person -->
+	<select id="selectAllPerson"   resultType="PersonDTO">
+	<![CDATA[
+		SELECT * FROM Person
+	]]>
+	</select>
+	
+	<select id="selectIdPwd"  parameterType="map"  resultType="PersonDTO">
+	<![CDATA[
+		SELECT * FROM PERSON WHERE USER_ID = #{id} AND USER_PWD = #{pwd}
+	]]>
+	</select>
+	<!-- 사람 전체 카운트::정수 -->
+	<select id="selectCountPerson" resultType="java.lang.Integer">
+	<![CDATA[
+	select count(*) from person 
+	]]>
+	</select>
+	<!-- 사람 남여 카운트::리스트 -->
+	<select id="selectCountManWoman" resultType="java.lang.Integer">
+	<![CDATA[
+	SELECT COUNT(*) from  certification_db_layout C GROUP BY C.SEX;
+	]]>
+	</select>
+	<!-- 의료보건 카운트::정수 -->
+	<select id="selectCountM" resultType="java.lang.Integer">
+	<![CDATA[
+	SELECT COUNT(*) FROM m_specification
+	]]>
+	</select>
+	<!-- 치과한방 카운트::정수 -->
+	<select id="selectCountDH" resultType="java.lang.Integer">
+	<![CDATA[
+	SELECT COUNT(*) FROM dh_specification
+	]]>
+	</select>
+	<!-- 약국 카운트::정수 -->
+	<select id="selectCountP" resultType="java.lang.Integer">
+	<![CDATA[
+	SELECT COUNT(*) FROM p_specification
+	]]>
+	</select>
+	
+	<!-- 약국 청구금액 합계::정수 -->
+	<select id="selectSumDMDP" resultType="java.lang.Integer">
+	<![CDATA[
+		SELECT SUM( DMD_TRAMT) FROM p_specification
+	]]>
+	</select>
+	<!-- 의료보건 청구금액 합계::정수 -->
+	<select id="selectSumDMDM" resultType="java.lang.Integer">
+	<![CDATA[
+		SELECT SUM( DMD_TRAMT) FROM m_specification
+	]]>
+	</select>
+	<!-- 치과한방 청구금액 합계::정수 -->
+	<select id="selectSumDMDDH" resultType="java.lang.Integer">
+	<![CDATA[
+		SELECT SUM( DMD_TRAMT) FROM dh_specification
+	]]>
+	</select>
+	<!-- 시군구별 통계 현황 조사 -->
+	
+<!-- 	SELECT SUM( DMD_TRAMT) FROM m_specification
+SELECT SUM( DMD_TRAMT) FROM dh_specification -->
+	
+		
+</mapper>
