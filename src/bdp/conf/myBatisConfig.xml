@@ -10,6 +10,7 @@
    <!--클래스들의 전체 경로와 이름에 별칭 만들기 -->
    <typeAliases>
       <typeAlias type="bdp.model.dto.PersonDTO" alias="PersonDTO"/>
+      <typeAlias type="bdp.model.dto.SidoSpecifiCountDTO" alias="SidoSpecifiCountDTO"/>
    </typeAliases>
 
 	<environments default="development">

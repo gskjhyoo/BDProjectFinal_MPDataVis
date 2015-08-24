@@ -67,8 +67,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 시군구별 통계 현황 조사 -->
 	
-<!-- 	SELECT SUM( DMD_TRAMT) FROM m_specification
-SELECT SUM( DMD_TRAMT) FROM dh_specification -->
+	<!-- VisGeo 지역 시각화 질의문 -->
+	<!-- 시도 별 진료과목 -->
+	<select id="selectSidoSpecifiCount" resultType="SidoSpecifiCountDTO">
+	<![CDATA[
+		SELECT (SELECT SC.SIDO_NAME FROM SIDO_CODE SC WHERE SC.SGG = CDBL.SGG) GU_NAME, COUNT(*) COUNT_TOTAL
+		FROM M_SPECIFICATION S, 
+		(SELECT PERSON_ID, SGG
+		FROM  certification_db_layout) CDBL
+		 WHERE S.PERSON_ID = CDBL.PERSON_ID
+		 GROUP BY GU_NAME
+		 ORDER BY SGG
+	]]>
+	</select>
+	
 	
 		
 </mapper>
