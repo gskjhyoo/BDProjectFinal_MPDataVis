@@ -16,18 +16,59 @@ public class SidoSpecifiCountDAO {
 		return instance;
 	}
 	
-	public List<SidoSpecifiCountDTO> sidoSpecifiCount(){
-		System.out.println("SidoSpecifiCountDAO - SidoSpecifiCount");
+	public List<SidoSpecifiCountDTO> selectSidoMSpecifiCount(){
+		System.out.println("SidoSpecifiCountDAO - selectSidoMSpecifiCount");
 		SqlSession session = null;
 		List<SidoSpecifiCountDTO> lstSSC = null;
 		
 		try {
 			session = UtilDBMyBatis.getSqlSession();
-			lstSSC = session.selectList("bdp.mapper.selectSidoSpecifiCount");
+			lstSSC = session.selectList("bdp.mapper.selectMSidoMSpecifiCount");
 		} finally {
 			UtilDBMyBatis.closeSqlSession(session);
 		}
+		return lstSSC;
+	}
+	
+	public List<SidoSpecifiCountDTO> selectSidoHSpecifiCount(){
+		System.out.println("SidoSpecifiCountDAO - selectSidoHSpecifiCount");
+		SqlSession session = null;
+		List<SidoSpecifiCountDTO> lstSSC = null;
 		
+		try {
+			session = UtilDBMyBatis.getSqlSession();
+			lstSSC = session.selectList("bdp.mapper.selectSidoHSpecifiCount");
+		} finally {
+			UtilDBMyBatis.closeSqlSession(session);
+		}
+		return lstSSC;
+	}
+	
+	public List<SidoSpecifiCountDTO> selectSidoDSpecifiCount(){
+		System.out.println("SidoSpecifiCountDAO - selectSidoDSpecifiCount");
+		SqlSession session = null;
+		List<SidoSpecifiCountDTO> lstSSC = null;
+		
+		try {
+			session = UtilDBMyBatis.getSqlSession();
+			lstSSC = session.selectList("bdp.mapper.selectDSidoSpecifiCount");
+		} finally {
+			UtilDBMyBatis.closeSqlSession(session);
+		}
+		return lstSSC;
+	}
+	
+	public List<SidoSpecifiCountDTO> selectPSidoSpecifiCount(){
+		System.out.println("SidoSpecifiCountDAO - selectSidoPSpecifiCount");
+		SqlSession session = null;
+		List<SidoSpecifiCountDTO> lstSSC = null;
+		
+		try {
+			session = UtilDBMyBatis.getSqlSession();
+			lstSSC = session.selectList("bdp.mapper.selectSidoPSpecifiCount");
+		} finally {
+			UtilDBMyBatis.closeSqlSession(session);
+		}
 		return lstSSC;
 	}
 	

@@ -16,7 +16,7 @@ public class VisGeoAction implements Action{
 		System.out.println("VisPStaticAction execute");
 		
 		//2. db
-		List<SidoSpecifiCountDTO> lstSSC= SidoSpecifiCountDAO.getInstance().sidoSpecifiCount();
+		List<SidoSpecifiCountDTO> lstSSC= SidoSpecifiCountDAO.getInstance().selectSidoMSpecifiCount();
 		request.setAttribute("SidoSpecifiCount", lstSSC);
 		
 		ActionForward forward  = new ActionForward();

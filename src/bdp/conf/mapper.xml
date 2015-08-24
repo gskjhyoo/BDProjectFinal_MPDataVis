@@ -68,19 +68,55 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 시군구별 통계 현황 조사 -->
 	
 	<!-- VisGeo 지역 시각화 질의문 -->
-	<!-- 시도 별 진료과목 -->
-	<select id="selectSidoSpecifiCount" resultType="SidoSpecifiCountDTO">
+	<!-- 시도 별 의료보건 진료수 -->
+	<select id="selectMSidoMSpecifiCount" resultType="SidoSpecifiCountDTO">
 	<![CDATA[
-		SELECT (SELECT SC.SIDO_NAME FROM SIDO_CODE SC WHERE SC.SGG = CDBL.SGG) GU_NAME, COUNT(*) COUNT_TOTAL
+		SELECT (SELECT SC.SIDO_NAME FROM SIDO_CODE SC WHERE SC.SGG = CDBL.SGG) sggName, COUNT(*) countTotal
 		FROM M_SPECIFICATION S, 
 		(SELECT PERSON_ID, SGG
 		FROM  certification_db_layout) CDBL
 		 WHERE S.PERSON_ID = CDBL.PERSON_ID
-		 GROUP BY GU_NAME
+		 GROUP BY sggName
+		 ORDER BY SGG
+	]]>
+	</select>
+	<!-- 시도 별 치과 진료수 -->
+	<select id="selectSidoDSpecifiCount" resultType="SidoSpecifiCountDTO">
+	<![CDATA[
+		SELECT (SELECT SC.SIDO_NAME FROM SIDO_CODE SC WHERE SC.SGG = CDBL.SGG) sggName, COUNT(*) countTotal
+		FROM DH_SPECIFICATION S, 
+		(SELECT PERSON_ID, SGG
+		FROM  certification_db_layout) CDBL
+		 WHERE S.PERSON_ID = CDBL.PERSON_ID AND S.DSBJT_CD LIKE ('5%') 
+		 GROUP BY sggName
+		 ORDER BY SGG
+	]]>
+	</select>
+	<!-- 시도 별 한방 진료수 -->
+	<select id="selectSidoHSpecifiCount" resultType="SidoSpecifiCountDTO">
+	<![CDATA[
+		SELECT (SELECT SC.SIDO_NAME FROM SIDO_CODE SC WHERE SC.SGG = CDBL.SGG) sggName, COUNT(*) countTotal
+		FROM DH_SPECIFICATION S, 
+		(SELECT PERSON_ID, SGG
+		FROM  certification_db_layout) CDBL
+		 WHERE S.PERSON_ID = CDBL.PERSON_ID AND S.DSBJT_CD LIKE ('8%') 
+		 GROUP BY sggName
 		 ORDER BY SGG
 	]]>
 	</select>
 	
+	<!-- 시도 별 약국 진료수 -->
+	<select id="selectSidoPSpecifiCount" resultType="SidoSpecifiCountDTO">
+	<![CDATA[
+		SELECT (SELECT SC.SIDO_NAME FROM SIDO_CODE SC WHERE SC.SGG = CDBL.SGG) sggName, COUNT(*) countTotal
+		FROM P_SPECIFICATION S, 
+		(SELECT PERSON_ID, SGG
+		FROM  certification_db_layout) CDBL
+		 WHERE S.PERSON_ID = CDBL.PERSON_ID
+		 GROUP BY sggName
+		 ORDER BY SGG
+	]]>
+	</select>
 	
 		
 </mapper>

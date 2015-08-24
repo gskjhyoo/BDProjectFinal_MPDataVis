@@ -1,36 +1,37 @@
 package bdp.model.dto;
 
 public class SidoSpecifiCountDTO {
-	String guName;
+	
+	String sggName;
 	Long countTotal;
 	
-	public SidoSpecifiCountDTO(String guName, Long countTotal) {
-		this.guName = guName;
+	public SidoSpecifiCountDTO(String sggName, Long countTotal) {
+		this.sggName = sggName;
 		this.countTotal = countTotal;
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("SidoSpecifiCountDTO [guName=");
-		builder.append(guName);
+		builder.append("SidoSpecifiCountDTO [sggName=");
+		builder.append(sggName);
 		builder.append(", countTotal=");
 		builder.append(countTotal);
 		builder.append("]");
 		return builder.toString();
 	}
-	public String getGuName() {
-		return guName;
+
+	public String getSggName() {
+		return sggName;
 	}
-	public void setGuName(String guName) {
-		this.guName = guName;
+	public void setSggName(String sggName) {
+		this.sggName = sggName;
 	}
-	public Long getCountTotal() {
+	public long getCountTotal() {
 		return countTotal;
 	}
 	public void setCountTotal(Long countTotal) {
 		this.countTotal = countTotal;
 	}
-	
 	
 }// end of class
